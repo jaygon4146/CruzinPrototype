@@ -12,32 +12,32 @@ public class CarController : MonoBehaviour {
 
     public ControlType controlType = ControlType.WheelTorque;
     private InputHandler carInput;
+    private Rigidbody carRB;
 
-    public float maxWheelAngle = 45f;
-    public float maxWheelTorque = 800f;
-    public float brakeWheelTorque = 30000f;
+    public Transform carCenterOfMass;
+    public List<SimpleWheel> wheelList = new List<SimpleWheel>();
 
-    public SimpleWheel FrontLeftWheel;
-    public SimpleWheel FrontRightWheel;
-    public SimpleWheel BackLeftWheel;
-    public SimpleWheel BackRightWheel;
+    public float enginePower = 400f;
+    public float turnPower = 10f;
 
-    private List<SimpleWheel> wheelList = new List<SimpleWheel>();
+    [SerializeField] private float currentSpeed;
+    public float maxSpeed = 150f;
+    public float acceleration = 5f;
+    public float decceleration = 10f;
+    public float reverseMaxSpeed = 20f;
+    public float reverseAcceleration = 2.5f;
+    public float reverseDecceleration = 10f;
 
-    [SerializeField] private float steerAngle;
-    [SerializeField] private float torque;
-    [SerializeField] private float handBrake;
 
     void Awake()
     {
         carInput = GetComponent <InputHandler>();
-        wheelList.Add(FrontLeftWheel);
-        wheelList.Add(FrontRightWheel);
-        wheelList.Add(BackLeftWheel);
-        wheelList.Add(BackRightWheel);
+        carRB = GetComponent<Rigidbody>();
+
+        carRB.centerOfMass = carCenterOfMass.localPosition;
+
     }
-
-
+    
     void Update()
     {
     }
@@ -56,6 +56,8 @@ public class CarController : MonoBehaviour {
 
     private void WheelTorqueFU()
     {
+        #region testing
+        /*
         steerAngle = maxWheelAngle * carInput.SteerAction.axisFloat;
         torque = maxWheelTorque * carInput.AccelerateAction.axisFloat;
 
@@ -75,7 +77,33 @@ public class CarController : MonoBehaviour {
             {
                 wheel.wCollider.motorTorque = torque;
             }
-        } 
+        }*/
+        #endregion
+
+        float torque = carInput.AccelerateAction.axisFloat * enginePower;
+        float turnSpeed = carInput.SteerAction.axisFloat * turnPower;
+        float brakeTorque = carInput.BrakeAction.buttonHeld ? enginePower : 0;
+
+
+        foreach (SimpleWheel wheel in wheelList)
+        {
+            if (wheel.HasSteering)
+            {
+                wheel.wCollider.steerAngle = turnSpeed;
+            }
+            if (wheel.HasBrakes)
+            {
+                wheel.wCollider.brakeTorque = brakeTorque;
+            }
+            if (wheel.HasAcceleration)
+            {
+                wheel.wCollider.motorTorque = torque;
+            }
+        }
+
+        currentSpeed = carRB.velocity.magnitude;
+        
+
     }    
 
     private void RBForcesFU()

@@ -4181,17 +4181,17 @@ Prefab:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
       propertyPath: m_SuspensionSpring.spring
-      value: 37934.613
+      value: 37934.605
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
       propertyPath: m_SuspensionSpring.damper
-      value: 6069.5386
+      value: 6069.5376
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
@@ -4206,17 +4206,17 @@ Prefab:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
       propertyPath: m_SuspensionSpring.spring
-      value: 37436.695
+      value: 37436.688
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
       propertyPath: m_SuspensionSpring.damper
-      value: 5989.871
+      value: 5989.87
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
       propertyPath: m_SuspensionDistance
-      value: 0.19619998
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 2}
@@ -4319,8 +4319,7 @@ Prefab:
         type: 2}
       propertyPath: wheelShape
       value: 
-      objectReference: {fileID: 1665399244120700, guid: df0f784c1fc65f443a94d64d3a2934d5,
-        type: 2}
+      objectReference: {fileID: 100000, guid: 01c23e3b42e6f4f44b3311dc6f472cfb, type: 3}
     - target: {fileID: 4000012209830938, guid: 6577377bae7db18429e690f8f8f57881, type: 2}
       propertyPath: m_LocalPosition.z
       value: -1.322

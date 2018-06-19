@@ -22,12 +22,7 @@ public class CarThirdPersonCamera : MonoBehaviour {
         Vector3 moveToPosition = Vector3.Lerp(transform.position, targetFrom.position, lerp);
         transform.position = moveToPosition;
 
-
-
         transform.LookAt(lookAt);
-
-
-
 
     }
 
